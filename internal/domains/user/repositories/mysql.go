@@ -28,6 +28,7 @@ func (u *mysql) CreateUser(ctx context.Context, model *models.User) (*models.Use
 	}
 
 	model.ID, _ = result.LastInsertId()
+	model.Password = nil
 
 	return model, err
 }
