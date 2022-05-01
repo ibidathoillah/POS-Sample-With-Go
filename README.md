@@ -1,10 +1,8 @@
 ## Question
 
 # Seeder Account
--
 username: admin1
 password: admin1
--
 username: admin2
 password: admin2
 
