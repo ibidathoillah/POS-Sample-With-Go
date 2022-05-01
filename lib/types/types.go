@@ -1,8 +1,10 @@
 package types
 
 import (
+	"crypto/md5"
+	"fmt"
+
 	"github.com/go-chi/jwtauth"
-	"golang.org/x/crypto/bcrypt"
 )
 
 type Password string
@@ -12,9 +14,7 @@ var tokenAuth *jwtauth.JWTAuth = jwtauth.New("HS256", []byte("secret"), nil)
 
 func (p *Password) Validate(password []byte) bool {
 
-	byteHash := []byte(*p)
-	err := bcrypt.CompareHashAndPassword(byteHash, password)
-	if err != nil {
+	if fmt.Sprintf("%s", *p) != fmt.Sprintf("%x", md5.Sum(password)) {
 		return false
 	}
 
@@ -23,12 +23,8 @@ func (p *Password) Validate(password []byte) bool {
 
 func (p *Password) Encrypt() error {
 
-	hash, err := bcrypt.GenerateFromPassword([]byte(*p), 13)
-	if err != nil {
-		return err
-	}
+	data := []byte(*p)
+	*p = Password(fmt.Sprintf("%x", md5.Sum(data)))
 
-	*p = Password(hash)
-
-	return err
+	return nil
 }
