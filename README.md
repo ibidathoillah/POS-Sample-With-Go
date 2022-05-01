@@ -1,5 +1,12 @@
 ## Question
 
+# Seeder Account
+username: admin1
+password: admin1
+-
+username: admin2
+password: admin2
+
 Test Case : Backend
 Answer: https://docs.google.com/document/d/1FNm9QXchLTG9IRA_gRikQWKf0SkJC8SnCMoBSLdoe2M/edit?usp=sharing
 
