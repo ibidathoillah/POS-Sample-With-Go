@@ -29,5 +29,5 @@ func NewMerchantService(
 
 	service.logger = log.With(logger, "ACTOR", service.actor)
 
-	return &	
+	return &service
 }
