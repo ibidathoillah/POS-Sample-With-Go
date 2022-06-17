@@ -35,3 +35,4 @@ make migration version=YOUR_VERSION_NUMBER filename=YOUR_FILE_NAME
 ```shell script
 make domain name=YOUR_DOMAIN_NAME
 ```
+
